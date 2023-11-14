@@ -1,0 +1,73 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Measure \& Probability Theory  --- Feedback Exercise 4}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\C}{\mathcal{C}}
+
+\newcommand{\halfopen}[2]{\, [\frac{#1}{100},\frac{#2}{100}) \,}
+\newcommand{\borel}{\mathcal{B}(\mathbb{R})}
+\newcommand{\powerX}{\mathcal{P}(X)}
+\newcommand{\infcup}{\bigcup_{j=0}^\infty}
+\newcommand{\infsum}{\sum_{j=0}^\infty}
+
+\newcommand{\salgebra}{\sigma\text{-algebra}}
+\newcommand{\outerset}{\mathcal{M}_{\outermu}}
+\newcommand{\outermu}{\mu^\ast}
+\newcommand{\outerlamb}{\lambda^\ast}
+
+\newcommand{\invf}{f^{-1}}
+\newcommand{\invh}{h^{-1}}
+\newcommand{\invg}{g^{-1}}
+
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+\begin{enumerate}[label=(\roman*)]
+    \item Part 1
+    \item Part 2
+\end{enumerate}
+    
+
+%%%
+\begin{center}
+\section*{Question (2)}
+\end{center}
+
+
+\begin{enumerate}[label=(\roman*)]
+	\item We are back baby!
+			
+    \item Since the Riemann integral coincides with Lebesgue integral, provided that the Riemann integral exists, then $\int_A f(x) d\mu$ is the integral of sin$(x)$ on the interval [$0, \pi/2$], which is $-\text{cos}(\pi/2) + \text{cos}(0) = 0 + 1 = 1$. 
+    \item Given that the integral over a null-set is a 0 then we can split the integral of this piecewise function. The rationals on the interval $A$ are countable and, hence, are a null-set on the Lebesgue measure. \newline
+
+    We write the integral such as $\int_A g(x) d\mu = \int_{A \setminus \I} g(x) d\mu + \int_{A \setminus \Q} g(x) d\mu$. Due to the piecewise definition of the function, this becomes $\int_{A \setminus \I} \sin(x) d\mu + \int_{A \setminus \Q} \cos(x) d\mu = \int_{A} \cos(x) d\mu$. Then, this integral coincides with the Riemann integral on $[0, \pi/2]$ and $\int_{[0, \pi/2]} \text{cos}(x) = 1$.
+
+
+    %%% CAREFUL HOW DISCUSSING INTEGRALS OF DOMAINS 
+    \item Consider $A = U \cup V$, where $U := \{ x \in A : \cos(x) \in \I \}$, $V := \{ x \in A : \cos(x) \in \Q \}$. Since $U$ and $V$ are trivially disjoint then $\int_A h(x) d\mu = \int_U h(x) d\mu + \int_V h(x) d\mu$. However, $\cos(x)$ is irrational for all non-zero rational values $x$, hence $V = \{ 0, \pi/2 \}$ and $\mu(V) = 0$. Consequently, $\int_A h(x) d\mu = \int_U h(x) d\mu$. \newline 
+
+    By definition of $h$, then $h$ constrained to $U$ is $\sin^2(x)$, hence $\int_A h(x) = \int_U \sin^2(x) d\mu$. Once more, this is a continuous function which coincides with the Riemann integral and --- TO FINISH.
+\end{enumerate}
+
+\end{document}
