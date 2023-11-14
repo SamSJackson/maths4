@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Topics in Algebra  --- Feedback Exercise 1}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\zmod}[1]{\mathbb{Z}/#1\mathbb{Z}}
+\newcommand{\zmodtwo}[2]{#1\mathbb{Z}/#2\mathbb{Z}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\anglemod}[2]{\langle#1\rangle / \langle#2\rangle}
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+\begin{flushleft}
+Immediately, we check if the existing chain is isomorphic. We see that these two chains create the sets $\Big\{20\mathbb{Z}, \zmod{20}\Big\}$ and $\Big\{15\mathbb{Z}, \zmod{15}\Big\}$ and no bijection can be constructed here, as no groups are equivalently isomorphic. Then we construct the refinements $\{0\} \leq 60\Z \leq 15\Z \leq 5\Z \leq \Z$ and $\{0\} \leq 60\Z \leq 20\Z \leq 4\Z \leq \Z$. These create the sets $\Big\{60\Z, \zmodtwo{15}{60}, \zmodtwo{5}{15}, \zmod{5}\Big\}$ and $\Big\{60\Z, \zmodtwo{20}{60}, \zmodtwo{4}{20}, \zmod{4}\Big\}$. Up to isomorphism type, these respectively become $\Big\{60\Z, \zmod{4}, \zmod{3}, \zmod{5}\Big\}$ and $\Big\{60\Z, \zmod{3}, \zmod{5}, \zmod{4}\Big\}$, and a bijection can be clearly constructed, where the corresponding elements must be isomorphic.
+\end{flushleft}
+%%%
+\begin{center}
+\section*{Question (2)}
+\end{center}
+
+\begin{flushleft}
+Similar to the last question, these chains are not immediately isomorphic. This can be seen quickly by noting that there is a group of order 4 in the first (left) chain and no group of order 4 in the second (right) chain. \newline
+
+We form the new isomorphic refinements $\{0\} \leq \langle18\rangle \leq \langle6\rangle \leq \langle3\rangle \leq \Z_{72}$ and $\{0\} \leq \langle24\rangle \leq \langle12\rangle \leq \langle3\rangle \leq \Z_{72}$. These refinements form the sets $\{\langle18\rangle/\{0\}, \anglemod{6}{18}, \anglemod{3}{6}, \Z_{72}/\langle3\rangle \}$ and $\{ \langle24\rangle / \{0\}, \anglemod{12}{24}, \anglemod{3}{12}, \Z_{72}/\langle3\rangle \}$, respectively. \newline
+
+These simplify into their respective isomorphism types as follows $\{ \zmod{4}, \zmod{3}, \zmod{2}, \zmod{24}\}$ and $\{ \zmod{3}, \zmod{2}, \zmod{4}, \zmod{24}\}$. Once again, a bijection between isomorphic elements can be clearly constructed, hence isomorphic refinements.
+\end{flushleft}
+
+\begin{center}
+\section*{Question (3)}
+\end{center}
+
+\begin{flushleft}
+For this question, we will prove that the center of a direct product of groups is the direct product of the center of the groups. 
+
+Let $K = G_1 \times  G_2 \times ... \times G_n$ be a direct product of groups $G_i$, for $i \in \{1, \dotsc, n\}$. Let $g, h \in K$, then $gh = hg$ iff $g_i h_i = h_i g_i$, for all $i \in \{1, \dotsc, n\}$. Hence $g$ (or $h$) lies in $Z(K)$ iff $g_i \in Z(G_i)$, for all $i \in \{1, \dotsc, n\}$.
+Since every element in $Z(K)$ is the product of elements $g_i \in G_i$, then $Z(K) = Z(G_1) \times Z(G_2) \times \dotsc \times Z(G_n)$, as required. \newline
+
+Then, we see that $Z(S_3) = \{1\}$ and $Z(D_4) = \{1, \sigma^2\}$, where we define $D_4 = \langle \rho, \sigma : \sigma^4 = \rho^2 = 1, \rho\sigma = \sigma^{-1}\rho \rangle$. Hence, $Z(S_3 \times D_4) = \{ (1, 1), (1, \sigma^2) \}$
+\end{flushleft}
+\end{document}

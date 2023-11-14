@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Algebraic Topology  --- Feedback Exercise 3}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\pind}{p_{\ast}}
+
+%%%
+\begin{center}
+    \section*{Question (1)}
+\end{center}
+
+\begin{flushleft}
+    Suppose that $p$ is a covering map, then for each point $x \in X$ has an open neighbourhood $U$ such that $p^{-1}(U)$ is a collection of disjoint open sets such that each open set maps homeomorphically to $U$. \newline
+
+    Consider the circle $S^1$ in terms of polar coordinates, $S^1 = \{e^{i\theta} : \theta \in [0, 2\pi] \}$. Then, for the point $x \in S^1$, where $\theta = 0$, we have an open neighbourhood $V$. Since $V$ is an open neighbourhood, there must be some open ball $U \subseteq V$. For $\epsilon > 0$, let $U$ have radius $\epsilon$. Since $U$ is an open set and subset of $V$ then $U$ must also be evenly covered. \newline
+
+    The preimage of $U$ is given as the collection \{($-\epsilon, \epsilon)$, $(-1, -1+\epsilon) \cup (1 - \epsilon, 1)$\}. Consider the set $B = (-1, -1+\epsilon) \cup (1 - \epsilon, 1)$, since $p$ is a covering map then $B$ must map homeomorphically to $U$. However, $U$ is a connected space while $B$ is the union of disjoint open sets and thus is disconnected, hence there cannot be a homeomorphism and $p$ must not be a covering map.
+\end{flushleft}
+%%%
+\begin{center}
+    \section*{Question (2)}
+\end{center}
+
+\begin{flushleft}
+    Let $p_{X}$ be the covering map $p_{X} : (\tilde{X}, \tilde{x_0}) \rightarrow (X, x_0)$ and $p_{A}$ be the function $p_{A} : \tilde{A} \rightarrow A$. \newline
+    
+    For $p_{A}$ to be a covering map, we require that each point $a \in A$ has an open neighbourhood that is evenly covered with respect to $p_{A}$ and $p_{A}$ is a continuous function. \newline
+    
+    Consider an arbitrary $a \in A$, then since $p_{X}$ was a covering map onto $X$, there is an open neighbourhood $V \subseteq X$ such that $a \in V$. Consider $U = A \cap V$, then $U$ is open in $A$ by the subspace topology. Similarly, $V$ is evenly covered by the covering map $p_{X}$, therefore $p_{X}^{-1}(V) = \bigcup_i^{n} \tilde{V}_i$ for some $n \in \N$ where each open set is pairwise disjoint. \newline
+    
+    Consequently, we have $p_{A}^{-1}(U) = p_{A}^{-1}(V \cap A) = p_{A}^{-1}(V) \cap p_{A}^{-1}(A) = \bigcup_i^n \tilde{V}_i \cap p_{A}^{-1}(A) = \bigcup_i^n \tilde{V}_i \cap \tilde{A}$. For $i \in \{1, \dots, n\}$, $\tilde{V}_i$ is open in $\tilde{X}$, hence $\tilde{V}_i \cap \tilde{A}$ is open in $\tilde{A}$ by the subspace topology. Therefore, $\bigcup_i^n \tilde{V}_i \cap \tilde{A}$ is a collection of open sets. They are also disjoint since $\tilde{V}_i$ were pairwise disjoint and $\tilde{V}_i \cap \tilde{A}$ is a subset of $\tilde{V}_i$. Therefore, each point $a \in A$ has an open neighbourhood which is evenly covered with respect to $p_{A}$. \newline
+
+    The function $p_{A}$ is trivially continuous since a restriction of a continuous function is still continuous. Therefore $p : \tilde{A} \rightarrow A$ is a covering map.
+\end{flushleft}
+
+%%%
+\begin{center}
+    \section*{Question (3)}
+\end{center}
+
+\begin{flushleft}
+    Let $\tilde{f}$ be a path in $(\tilde{X}, \tilde{x_0})$ such that $\tilde{f}(0) = \tilde{x}_0$ and $\pind([\tilde{f}]) = [c_X]$ where $c_X$ is the constant path in $X$ at $x_0$. By definition of the induced homorphism, $\pind([\tilde{f}]) = [p \circ \tilde{f}]$. Since $p \circ \tilde{f} \simeq c_X$, we can use the homotopy lifting theorem to see that there is a homotopy $P$ between $\tilde{f}$ and the lift of $c_X$ centred at $\tilde{x}_0$. \newline
+
+    Let the lift of $c_X$ centred at $\tilde{x}_0$ be denoted as $\tilde{c}_X$. Given that the lift of the constant path is constant, we know that $\tilde{c}_X$ is homotopic to the constant path in $\tilde{X}$. Furthermore, we see that $\tilde{f} \simeq \tilde{c}_X$ so $[\tilde{f}] = [\tilde{c}_X]$ and thus the kernel of the induced homomorphism, $\text{ker}(\pind) = \{[\tilde{c}_X]\}$, is trivial and therefore $\pind$ is injective.
+\end{flushleft}
+\end{document}

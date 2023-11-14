@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage{listofitems}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Topics in Algebra  --- Feedback Exercise 3}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\newcommand{\order}[1]{|#1|}
+\newcommand{\setS}{\mathcal{S}}
+\newcommand{\norm}{\trianglelefteq}
+
+\maketitle
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+\begin{flushleft}
+    Let $G$ be a group of order 96. Then this can be expressed as $\order{G} = 2^5 \cdot 3$. Hence, by Sylow I, there exists at least one Sylow 2-subgroup and Sylow 3-subgroup. \newline
+
+    Consider $\setS_2 = \{ P : P \text{ is a Sylow 2-subgroup}\}$. Define $n = \#\setS_2$. By Sylow II, $n \equiv 1 \, (\text{mod } 2)$ and $n \mid \order{G}$. We consider the set of divisors of 96, which is $\{1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48\}$. Since $n \equiv 1 \, (\text{mod } 2)$, then $n$ is odd, and since $n$ must be both odd and in the list of divisors, $n$ must be $1$ or $3$. \newline 
+
+    Suppose that $n = 1$, then for $P \in \setS_2$, $P$ is a normal proper non-trivial subgroup of $G$, as a consequence of Sylow II, hence $G$ is not simple. \newline
+    
+    For the other case, suppose that $n = 3$, then let $P, Q \in \setS_2$ where $P$ and $Q$ are distinct. The cardinality of $PQ$ is at most 96, since $P$ and $Q$ are subgroups of $G$ and $G$ is closed under group operations. However, note that $PQ$ may not be a group since $P$ and $Q$ are not guaranteed to be normal. By Lemma 37.8 in Fraleigh, $\order{PQ} = (\order{P}\order{Q}) / \order{P \cap Q}$. \newline 
+    
+    Since $P \cap Q$ is a subgroup of $P, Q$ and $G$, we know that $\order{P \cap Q}$ must be a divisor of $\order{P}$, which is 32. The divisors are $\{1, 2, 4, 8, 16, 32\}$. \newline 
+    
+    If $\order{P \cap Q} \leq 8$, then $\order{PQ} \geq 128 > \order{G}$, which is not possible. Hence $\order{P \cap Q} \in \{16, 32\}$. \newline
+
+    If $\order{P \cap Q} = 32$, then $P = Q$, which is against our hypothesis. Hence $\order{P \cap Q} = 16$. Importantly, $[P : P \cap Q] = 2$ and $[Q : P \cap Q] = 2$. Hence, $P \cap Q$ is normal in both $P$ and $Q$. Consequently, perhaps strangely, we consider the normaliser $N[P \cap Q]$. \newline
+
+    Since $P \cap Q$ is normal in $P$ and $Q$, then $P \norm N[P \cap Q]$ and so $N[P \cap Q]$ must be a multiple of 32. Furthermore, $N[P \cap Q]$ is a subgroup of $G$, so $N[P \cap Q]$ must divide 96, so $\order{N[P \cap Q]} \in \{48, 96\}$. However, 48 is not a multiple of 32 so $\order{N[P \cap Q]} = 96$. If $\order{N[P \cap Q]} = 96$, then $N[P \cap Q] = G$ and $P \cap Q \norm G$. Then $P \cap Q$ is a proper, non-trivial subgroup and $G$ must not be simple. \newline 
+    
+\end{flushleft}
+\end{document}

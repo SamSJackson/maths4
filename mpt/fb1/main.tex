@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Measure \& Probability Theory  --- Feedback Exercise 1}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\symdiff}[2]{(#1 \setminus #2) \cup (#2 \setminus #1)}
+\newcommand{\symdiffA}[2]{(#1 \cap #2^c) \cup (#1^c \cap #2)}
+\newcommand{\symdiffB}[2]{(#1 \cup #2) \cap (#1^c \cup #2^c)}
+\newcommand{\trigdiff}[2]{#1 \, \triangle \, #2}
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+\begin{enumerate}[label=(\roman*)]
+    \item $\trigdiff{A}{B}$ = $\symdiff{A}{B}$ = $\symdiff{B}{A}$ = $B \, \triangle \, A$. This is because the set union (and intersection) operator is a commutative binary operation.
+    \item To solve this question, we present two other forms of the symmetric difference which are equivalent:
+        \begin{enumerate}[label=(\alph*)]
+            \item $\trigdiff{A}{B} = \symdiffA{A}{B}$
+            \item $\trigdiff{A}{B} = \symdiffB{A}{B}$
+        \end{enumerate}
+        Then, we use both of these too expand the left hand side $(\trigdiff{A}{B}) \, \triangle \, C$ and show it is the same as $A \, \triangle \, (\trigdiff{B}{C})$.
+        \begin{align*}
+            & (\trigdiff{A}{B}) \, \triangle \, C = ((\trigdiff{A}{B}) \cap C^c) \cup ((\trigdiff{A}{B})^c \cap C) & \text{Sym. Def. A} \\ 
+            & = (((A \cap B^c) \cup (A^c \cap B)) \cap C^c) \cup ((\trigdiff{A}{B})^c \cap C) & \text{Sym. Def. A} \\ 
+            & = (((A \cap B^c) \cup (A^c \cap B)) \cap C^c) \cup (((A \cup B)^c \cup (A^c \cup B^c)^c)) \cap C) & \text{Complement of Sym. Def. B} \\ 
+            & = (A \cap B^c \cap C^c) \cup (A^c \cap B \cap C^c) \cup (A^c \cap B^c \cap C) \cup (A \cap B \cap C) & \text{Complements and Intersection Distri.}
+        \end{align*}
+        Now, expanding the right hand side of the equation $A \, \triangle \, (\trigdiff{B}{C})$.
+        \begin{align*}
+            & A \, \triangle \, (\trigdiff{B}{C}) = (A \cap (\trigdiff{B}{C})^c) \cup (A^c \cap (\trigdiff{B}{C})) & \text{Sym. Def. A} \\
+            & = (A \cap (\trigdiff{B}{C})^c) \cup (A^c \cap ((B \cap C^c) \cup (B^c \cap C))) & \text{Sym. Def. A} \\ 
+            & = (A \cap ((B \cup C)^c \cup (B^c \cup C^c)^c)) \cup (A^c \cap ((B \cap C^c) \cup (B^c \cap C))) & \text{Complement of Sym. Def. B} \\ 
+            & = (A \cap B^c \cap C^c) \cup (A \cap B \cap C) \cup (A^c \cap B \cap C^c) \cup (A^c \cap B^c \cap C) & \text{Complements and Intersection Dist.}
+        \end{align*}
+        Then it can be seen that the final lines of each respective equation are equal, due to commutativity of the union operation. Hence $(\trigdiff{A}{B}) \, \triangle \, C = A \, \triangle \, (\trigdiff{B}{C})$.
+    \item $\trigdiff{A}{A}$ = $\symdiff{A}{A}$ = $\emptyset \cup \emptyset$ = $\emptyset$
+    \item $\trigdiff{A}{\emptyset}$ = $\symdiff{A}{\emptyset}$ = $A \cup \emptyset$ = $A$
+    \item $(\trigdiff{A}{B}) \cap C$ = $(\symdiff{A}{B}) \cap C$ = $\symdiff{A \cap C}{B \cap C}$ = $\trigdiff{(A \cap C)}{(B \cap C)}$. This is due to the distributive property of intersections over unions.
+\end{enumerate}
+
+%%%
+\begin{center}
+\section*{Question (2)}
+\end{center}
+
+\begin{flushleft}
+\begin{enumerate}[label=(\roman*)]
+    
+    \item Suppose $\mathcal{R}$ is a ring of $X$ as defined in lectures. Trivially, $\emptyset \in \mathcal{R}$. Let $A, B \in \mathcal{R}$, then by definition of a ring, $(A \setminus B) \cup (B \setminus A) \in \mathcal{R}$. However, this is precisely the symmetric difference operator, hence $\trigdiff{A}{B} \in \mathcal{R}$. Similarly, $A \cap B$ = $A \setminus (A \setminus B) \in \mathcal{R}$. Hence (a) and (b) are true. \newline 
+
+    Suppose (a) and (b) are true. Then, for the definition of a ring, we have satisfied that $\emptyset \in \mathcal{R}$. Let $A, B \in \mathcal{R}$, we first show that the union is contained in $\mathcal{R}$. Firstly, we will be using the definition $\trigdiff{A}{B} = (A \cup B) \setminus (A \cap B)$ ($\star$). Then, we will expand the following expression $(\trigdiff{A}{B}) \, \triangle \, (A \cap B)$, which is in $\mathcal{R}$ due to (b).
+    \begin{align*}
+        & (\trigdiff{A}{B}) \, \triangle \, (A \cap B) = \Big((\trigdiff{A}{B}) \cup (A \cap B)\Big) \setminus \Big((\trigdiff{A}{B}) \cap (A \cap B)\Big) & \text{Sym. Def. $\star$} \\
+        & = \Big((\trigdiff{A}{B}) \cup (A \cap B)\Big) \setminus \varnothing & \text{Empty - combine Q1(iii) \& (v)} \\ 
+        & = \Big((A \cup B) \setminus (A \cap B)\Big) \cup (A \cap B)& \text{Sym. Def. $\star$} \\
+        & = A \cup B & \text{Consequence of set difference \& union} 
+    \end{align*}
+    Since $(\trigdiff{A}{B}) \, \triangle \, (A \cap B)$ = $A \cup B$, then $A \cup B \in \mathcal{R}$.
+    Once again, due to (b), $A \, \triangle \, (A \cap B) \in \mathcal{R}$. We expand this expression as follows: 
+    \begin{align*}
+        & A \, \triangle \, (A \cap B) = (A \setminus (A \cap B)) \cup ((A \cap B) \setminus A) & \text{Sym. Def from Lecture} \\ 
+        & = (A \setminus (A \cap B)) \cup \varnothing & \\ 
+        & = A \setminus B &
+    \end{align*}
+    Then $A \setminus B \in \mathcal{R}$ as required, so $\mathcal{R}$ is a ring.
+    
+    \item Suppose $\mathcal{A}$ is an algebra, as defined in the lectures. Then, by definition, we have $\emptyset \in \mathcal{A}$. Furthermore, (c) is also satisfied trivially, by definition of a ring. 
+    Let $A \in \mathcal{A}$, then since $\mathcal{A}$ is a ring with $X \in \mathcal{A}$, we have $X \setminus A \in \mathcal{R}$, where $X \setminus A$ = $A^c$, satisfying (b). \newline
+
+    Suppose (a), (b) and (c) are true. Immediately, since $\emptyset \in \mathcal{A}$ then $\emptyset^c \in \mathcal{A}$, where $\emptyset^c = X \setminus \emptyset = X$. Hence $X \in \mathcal{A}$. 
+    For $\mathcal{A}$ to be a ring, we must only show that the set difference is contained within the set. Let $A, B \in \mathcal{A}$, then $A^c, B^c \in \mathcal{A}$ and $A^c \cup B \in \mathcal{A}$. By De Morgan's Laws, we see that $(A^c \cup B)^c$ = $A \cap B^c \in \mathcal{A}$. Then, we can see that $A \cap B^c$ = $A \setminus B \in \mathcal{A}$. Hence, set difference is contained within $\mathcal{A}$ and $\mathcal{A}$ is a ring with $X$ (an algebra).
+
+    
+\end{enumerate}
+\end{flushleft}
+
+\end{document}

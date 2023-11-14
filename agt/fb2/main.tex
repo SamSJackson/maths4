@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Algebraic Topology  --- Feedback Exercise 2}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\zmod}[1]{\mathbb{Z}/#1\mathbb{Z}}
+\newcommand{\zmodtwo}[2]{#1\mathbb{Z}/#2\mathbb{Z}}
+\newcommand{\phibar}{\overline{\phi}}
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+\begin{flushleft}
+    \begin{enumerate}[label=(\roman*)]
+        \item Since $f \simeq g$, then $f,g$ share endpoints and there is a continuous function $\phi : [0,1] \times [0,1] \rightarrow X $ defined by $ \phi(s, t) = \varphi_t(s)$, such that each $\varphi_t$ is a path from $f(0)$ to $f(1)$ and $\varphi_0$ = $f$, $\varphi_1$ = $g$. \newline
+
+        Then, consider the new function $\phibar : [0,1] \times [0,1] \rightarrow X $ defined by $\phibar(s, t) = \varphi_{(1-t)}(s)$. We check the conditions on $\phibar$ and see that $\phibar(s, 0) = g(s)$ and $\phibar(s,1) = f(s)$, for all $s \in [0,1]$. Similarly, $\phibar(0, s) = g(0)$ and $\phibar(1, s) = g(1)$. \newline
+
+        To show that $\phibar$ is continuous, we define a function $\rho : [0,1] \times [0,1] \rightarrow X \, $ defined by $\rho(s, t) = (s, 1-t)$. The function $\rho$ is continuous since it is constructed of an identity and linear map. Then, we notice that $\phibar = \phi \circ \rho$, hence $\phibar$ is the composition of continuous maps and $\phibar$ is continuous.
+        
+        \item Since $f \simeq g$, we have the following map: $\Gamma : [0,1] \times [0,1] \rightarrow X \,$ defined by $\Gamma(s,t) = \varphi_t(s)$ such that:
+            \begin{enumerate}[label=\arabic*)]
+                \item $\Gamma(0, t) = f(0)$ and $\Gamma(1, t) = f(1)$;
+                \item $\Gamma(s, 0) = f(s)$ and $\Gamma(s, 1) = g(s)$;
+                \item $\Gamma$ is continuous.
+            \end{enumerate}
+        Similarly, since $g \simeq h$, we have the map $H : [0,1] \times [0,1] \rightarrow X $ defined by $H(s,t) = \phi_t(s)$ such that: 
+            \begin{enumerate}[label=\arabic*)]
+                \item $H(0, t) = f(0)$ and $\Gamma(1, t) = f(1)$;
+                \item $H(s, 0) = f(s)$ and $\Gamma(s, 1) = h(s)$;
+                \item $H$ is continuous.
+            \end{enumerate}
+        We construct a new function $N : [0,1] \times [0,1] \rightarrow X$, defined
+        \[ N(s,t) =
+        \begin{cases}
+            \Gamma(s, 2t) & \text{if } 0 \leq t \leq \frac{1}{2} \\
+            H(s, 2t - 1) & \text{if } \frac{1}{2} \leq t \leq 1 \\ 
+        \end{cases} 
+        \]
+        We check for the conditions of homotopy and see that $N(s, 0) = \Gamma(s, 0) = f(s)$ and $N(s, 1) = H(s, 1) = h(s)$. Furthermore, we check that $N(0, t) = \Gamma(0, t) = H(0, t) = f(0)$ and $N(1, t) = \Gamma(1, t) = H(1, t) = h(1) = g(1) = f(1)$, as required. \newline
+
+        To see that $N$ is continuous, we use the Gluing Lemma (Lemma 3.5). The map $\Gamma$ restricted to the closed domain $[0, 1] \times [0,\frac{1}{2}]$ is continuous, since a continuous map restricted to a subspace is also continuous. Similarly, $H$ is continuous on the closed domain $[0,1] \times [\frac{1}{2}, 1]$. \newline 
+        
+        For Lemma 3.5, we must see that the functions agree at their intersection. We see that $[0,1] \times [0, \frac{1}{2}] \cap [0,1] \times [\frac{1}{2}, 1] = [0,1] \times \{\frac{1}{2}\}$, so we check that $\Gamma$ and $H$ agree at $[0,1] \times \{\frac{1}{2}\}$. For all $s \in [0,1]$, we have $\Gamma(s, 2(\frac{1}{2})) = \Gamma(s, 1) = g(s)$ and $H(s, 2(\frac{1}{2}) - 1) = H(s, 0) = g(s)$, so $\Gamma$ and $H$ agree on the intersection. Finally, $[0,1] \times [0, \frac{1}{2}] \cup [0,1] \times [\frac{1}{2}, 1] = [0,1] \times [0,1]$, as required. Hence, we can invoke the Gluing Lemma and see that $N$ is continuous. \newline
+
+        Therefore, $f \simeq h$ through the map $N$.
+    \end{enumerate}
+\end{flushleft}
+%%%
+\begin{center}
+\section*{Question (2)}
+\end{center}
+
+\begin{flushleft}
+To show that $(f \cdot c) \simeq f$, we must find a continuous function of the form $H : [0,1] \times [0,1] \rightarrow X$ such that:
+    \begin{enumerate}[label=\arabic*)]
+        \item $H(0,t) = f(0)$ and $H(1,t) = f(1)$;
+        \item $H(s,0) = (f \cdot c)(s)$ and $H(s,1) = f(s)$;
+        \item $H$ is continuous.
+    \end{enumerate}
+We can construct the following map, defined $H : [0,1] \times [0,1] \rightarrow X$ such that 
+    \[ H(s,t) =
+    \begin{cases}
+        f(\frac{2s}{1+t}) & \text{if } 0 \leq s \leq \frac{1+t}{2} \\
+        c(s) & \text{if } \frac{1+t}{2} \leq s \leq 1 \\ 
+    \end{cases} 
+    \]
+Then we check the preconditions, given above:
+    \begin{enumerate}[label=\arabic*)]
+        \item $H(0, t) = f(\frac{0}{1+t}) = f(0)$ and $H(1, t) = c(s) = f(1)$, as required;
+        \item $H(s, 0) = 
+            \begin{cases}
+                f(2s) & \text{if } 0 \leq s \leq \frac{1}{2} \\ 
+                c(s) & \text{if } \frac{1}{2} \leq s \leq 1
+            \end{cases} = (f \cdot c)(s)$ 
+        and $H(s, 1) =
+        \begin{cases}
+                f(s) & \text{if } 0 \leq s \leq 1  \\ 
+                c(s) & \text{if } s = 1 
+        \end{cases} = f(s)$, as required;
+        \item To prove that $H$ is continuous, we use the gluing lemma. We see that $f(\frac{2s}{1+t})$ is continuous on the closed domain $[0,\frac{1+t}{2}]$ and $c(s)$ is similarly continuous on the domain $[\frac{1+t}{2}, 1]$. Since the domains overlap at $\{\frac{1+t}{2}\} \times [0,1]$, we see that they agree for $f(\frac{2(\frac{1+t}{2})}{1+t}) = f(1)$ and $c(s) = f(1)$, for all $s \in [0,1]$. Finally $[0, \frac{1+t}{2}] \times [0,1] \cup [\frac{1+t}{2}, 1] \times [0,1] = [0,1] \times [0,1]$, therefore the Gluing Lemma is satisfied and $H$ is continuous.
+    \end{enumerate}
+\end{flushleft}
+\end{document}

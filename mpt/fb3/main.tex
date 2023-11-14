@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Measure \& Probability Theory  --- Feedback Exercise 3}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\C}{\mathcal{C}}
+
+\newcommand{\halfopen}[2]{\, [\frac{#1}{100},\frac{#2}{100}) \,}
+\newcommand{\borel}{\mathcal{B}(\mathbb{R})}
+\newcommand{\powerX}{\mathcal{P}(X)}
+\newcommand{\infcup}{\bigcup_{j=0}^\infty}
+\newcommand{\infsum}{\sum_{j=0}^\infty}
+
+\newcommand{\salgebra}{\sigma\text{-algebra}}
+\newcommand{\outerset}{\mathcal{M}_{\outermu}}
+\newcommand{\outermu}{\mu^\ast}
+\newcommand{\outerlamb}{\lambda^\ast}
+
+\newcommand{\invf}{f^{-1}}
+\newcommand{\invh}{h^{-1}}
+\newcommand{\invg}{g^{-1}}
+
+
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+\begin{flushleft}
+    For a given measure space $(X, \A, \mu)$, let $f : X \rightarrow \R$ be measurable. Consider $\C =\{ B \in \borel : \invf(B) \in \A \}$, so $C \subseteq B$. Since $\A$ is a $\salgebra$ then $X, \emptyset \in \A$. Furthermore, we see that $\invf(\R) = X$ and $\invf(\emptyset) = \emptyset$ which means that $\R$ and $\emptyset$ are in $\C$, since $\R$ and $\emptyset$ are part of the Borel $\salgebra$. \newline 
+
+    Suppose that $B \in \C$ then $\invf(B) \in \A$. Then, we view $B^c = \R \setminus B$ and see that $\invf(B^c) = \invf(\R \setminus B) = \invf(\R) \setminus \invf(B)$. Since $\A$ is a $\sigma$-algebra and $\invf(R)$ and $\invf(B)$ are in $\A$ then the set difference must be in $\A$ so $\invf(B^c) \in \A$ and $B^c \in \C$. \newline
+
+    Let $B_1, B_2, ... \in \C$ then since $B_i$ are Borel sets, for all $i \in \N$, then $\bigcup_{i=0}^\infty B_i \in \borel$. Furthermore, since $\A$ is a $\salgebra$, $\invf(B_1) \cup \invf(B_2) \cup ... = \bigcup_{i=0}^\infty \invf(B_i) = \invf(\bigcup_{i=0}^\infty B_i) \in \A$. Hence, $\bigcup_{i=0}^\infty B_i \in \C$. Therefore, $C$ is a $\salgebra$. \newline
+
+    By definition of the Borel $\salgebra$, $\borel \subseteq \C$. However, given $\C$ was defined as a subset of $\borel$ then $\C = \borel$. This means that all sets $B \in \borel$ satisfy the condition that $\invf(B) \in \A$.
+\end{flushleft}
+
+%%%
+\begin{center}
+\section*{Question (2)}
+\end{center}
+
+\begin{flushleft}
+    Let $(X, \A, \mu)$ be a measure space. Consider $x \in A$, then $\invh(x) = \invf(x)$, by the definition of $h$. Similarly, consider $x \in A^c$, then $\invh(x) = \invg(x)$. Consequently, this generalises to the cases that $A \cap \invh(a, \infty] = A \cap \invf(a, \infty]$ and $A^c \cap \invh(a, \infty] = A^c \cap \invg(a, \infty]$. Since $f$ and $g$ are measurable then $\invf(a, \infty]$ and $\invg(a, \infty]$ are in $\A$ for all $a \in \R$. Furthermore, since the measurable sets form a $\salgebra$ then the intersection of measurable sets is measurable, hence $A \cap \invf(a, \infty]$ and $A^c \cap \invg(a, \infty]$ are measurable sets, consequently they are in $\A$. \newline 
+    
+    Finally, we can view $\invh(a, \infty] = (A \cap \invh(a, \infty]) \cup (A^c \cap \invh(a, \infty]))$ and given that both sets of the union are in $\A$ then $\invh(a, \infty]$ is also in $\A$, as required. 
+\end{flushleft}
+
+\end{document}

@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Algebraic \& Geometric Topology --- Feedback Exercise 1}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+\begin{flushleft}
+Consider the map $q: D^2 \rightarrow S^2$ ; $re^{i\theta} \mapsto \big(\sin(\pi r)\cos(\theta), \sin(\pi r)\sin(\theta), \cos(\pi r)\big)$. Given the components are continuous, then $q$ is a continuous map. Consider a point $\textbf{y}$ in $S^2$ then, as a result of unit spherical coordinates, $\textbf{y}$ = ($\sin(\psi)\cos(\theta_1)$, $\sin(\psi)\sin(\theta_1)$, $\cos(\psi)$), with $\psi \in [0, \pi]$ and $\theta_1 \in [0, 2\pi]$. \newline
+
+Consider $\psi = \pi r_1$ with $r_1 \in [0,1]$. $D^2$ is defined such that $re^{i\theta} \in D^2$ with $r \in [0,1], \theta \in [0, 2\pi]$, hence $\exists r_1 \in [0, 1]$ and $\theta_1 \in [0, 2\pi]$ such that $q(r_1e^{i\theta_1})$ = $\textbf{y}$. Since $\textbf{y}$ is general, $q$ is surjective. \newline
+
+$D^2$ is a closed and bounded subset of $\mathbb{R}^2$ so $D^2$ is compact by Heine-Borel. $S^2$ is a sphere and can be induced by a metric, hence it is a Haussdorf space. Therefore, by Proposition 1.45, $q$ is a quotient map. \newline
+
+Consider the equivalence relation $\sim$ defined such that $\forall x,y \in D^2$, $x \sim y \iff x, y \in S^1$ or $x = y$. Let $x, y \in D^2$ and suppose $x \sim y$, if $x = y$, then $q(x) = q(y)$ trivially and if $x,y \in S^1$, then $q(x) = q(y) = (0, 0, -1)$. Suppose $q(x) = q(y)$ then $(\sin(\pi r_x)\cos(\theta_x), \sin(\pi r_x)\sin(\theta_x), \cos(\pi r_x)) = (\sin(\pi r_y)\cos(\theta_y), \sin(\pi r_y)\sin(\theta_y), \cos(\pi r_y))$. Since $\cos(\pi r_x) = \cos(\pi r_y)$ then $r_x = r_y$ (as $r$ is bounded in $[0,1]$). If $r_x = r_y = 1$ then $x, y \in S^1$ and $x \sim y$.
+For $r < 1$, $\cos(\theta_x) = \cos(\theta_y)$ and $\sin(\theta_x) = \sin(\theta_y)$. This is only possible on the bounded period $[0, 2\pi]$ if $\theta_x = \theta_y$, so $r_xe^{i\theta_x} = r_ye^{i\theta_y}$, for $k \in \mathbb{Z}$. Therefore $x = y$.
+
+Hence, we can apply Theorem 1.46 and see that $D^2 / S^1 \cong S^2$.
+\end{flushleft}
+
+%%%
+\begin{center}
+\section*{Question (2)}
+\end{center}
+
+\begin{flushleft}
+\begin{enumerate}[label=(\alph*)]
+    \item A connected, non-compact 1-manifold without boundary is $\mathbb{R}$.
+    \item A connected, non-compact 1-manifold with boundary is $\mathbb{R}_{\geq0}$.
+    \item A connected, compact 1-manifold without boundary is $S^1$.
+    \item A connected, compact 1-manifold with boundary is the unit interval $[0,1]$.
+\end{enumerate}
+\end{flushleft}
+
+\end{document}
