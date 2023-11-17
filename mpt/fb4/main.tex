@@ -22,11 +22,8 @@
 \newcommand{\A}{\mathcal{A}}
 \newcommand{\C}{\mathcal{C}}
 
-\newcommand{\halfopen}[2]{\, [\frac{#1}{100},\frac{#2}{100}) \,}
 \newcommand{\borel}{\mathcal{B}(\mathbb{R})}
 \newcommand{\powerX}{\mathcal{P}(X)}
-\newcommand{\infcup}{\bigcup_{j=0}^\infty}
-\newcommand{\infsum}{\sum_{j=0}^\infty}
 
 \newcommand{\salgebra}{\sigma\text{-algebra}}
 \newcommand{\outerset}{\mathcal{M}_{\outermu}}
@@ -37,6 +34,7 @@
 \newcommand{\invh}{h^{-1}}
 \newcommand{\invg}{g^{-1}}
 
+\newcommand{\nlim}{\lim\limits_{n \rightarrow \infty}}
 
 %%%
 \begin{center}
@@ -44,8 +42,17 @@
 \end{center}
 
 \begin{enumerate}[label=(\roman*)]
-    \item Part 1
-    \item Part 2
+    \item We define $f(x) = \nlim f_n(x)$. Assume that DCT is true without an integrable function $g \geq 0$ such that $|f_n| \leq g$ for all $n$. Then, by the DCT, $\nlim \int_X f_n d\mu= \int_X \nlim f_n d\mu = \int_X f d\mu$. \newline
+    
+    We see that $f_n$ is not bounded by an integrable function $g$, for all $n \in \N$, since for any $x \in \R$, there exist an $n \in \N$ such that $f_n(x) = 1$, so $g(x) \geq 1$ for all $x \in \R$. Given that this would not be a finite integral, $g$ is not an integrable function. 
+    
+    Notice that for all $x \in \R$ and for all $\epsilon > 0$, there is $N = \text{ceil}(x) + 2$ such that for all $n > N$, $|f_n(x) - 0| < \epsilon$. Then, we can see that $f_n$ pointwise converges to $0$, hence $f(x) = 0$ for all $x \in \R$. \newline
+    
+    For each $n \in \N$, $f_n$ is a characteristic function on a measurable set. Hence, we can calculate integral as the simple measurable function $\int_X f_n d\mu = \int_X  \chi_{[n, n+1]} d\mu = \mu([n, n+1]) = 1$. \newline
+    
+    Combining this, we see that $\int_X \nlim f_n d\mu = \int_X f d\mu = 0$, while $\nlim \int_X f_n d\mu = \nlim 1 = 1$. Contradicting part (iii) of the DCT.
+    
+    \item Following from the previous part, we have that $\int_X f_n d\mu = 1$, for all $n \in \N$, while $\int_X f d\mu = 0$. Hence, $\int_X \nlim f_n d\mu = \int_X f d\mu < \nlim \int_X f_n d\mu$.  
 \end{enumerate}
     
 
@@ -56,8 +63,6 @@
 
 
 \begin{enumerate}[label=(\roman*)]
-	\item We are back baby!
-			
     \item Since the Riemann integral coincides with Lebesgue integral, provided that the Riemann integral exists, then $\int_A f(x) d\mu$ is the integral of sin$(x)$ on the interval [$0, \pi/2$], which is $-\text{cos}(\pi/2) + \text{cos}(0) = 0 + 1 = 1$. 
     \item Given that the integral over a null-set is a 0 then we can split the integral of this piecewise function. The rationals on the interval $A$ are countable and, hence, are a null-set on the Lebesgue measure. \newline
 
