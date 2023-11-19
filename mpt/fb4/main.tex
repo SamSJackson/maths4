@@ -52,7 +52,7 @@
     
     Combining this, we see that $\int_X \nlim f_n d\mu = \int_X f d\mu = 0$, while $\nlim \int_X f_n d\mu = \nlim 1 = 1$. Contradicting part (iii) of the DCT.
     
-    \item Following from the previous part, we have that $\int_X f_n d\mu = 1$, for all $n \in \N$, while $\int_X f d\mu = 0$. Hence, $\int_X \nlim f_n d\mu = \int_X f d\mu < \nlim \int_X f_n d\mu$.  
+    \item Following from the previous part, we have that $\int_X f_n d\mu = 1$, for all $n \in \N$, while $\int_X f d\mu = 0$. Hence, $\int_X \nlim f_n d\mu = \int_X f d\mu < \nlim \int_X f_n d\mu$. 	 
 \end{enumerate}
     
 
@@ -63,16 +63,26 @@
 
 
 \begin{enumerate}[label=(\roman*)]
-    \item Since the Riemann integral coincides with Lebesgue integral, provided that the Riemann integral exists, then $\int_A f(x) d\mu$ is the integral of sin$(x)$ on the interval [$0, \pi/2$], which is $-\text{cos}(\pi/2) + \text{cos}(0) = 0 + 1 = 1$. 
-    \item Given that the integral over a null-set is a 0 then we can split the integral of this piecewise function. The rationals on the interval $A$ are countable and, hence, are a null-set on the Lebesgue measure. \newline
+    \item Since the Riemann integral coincides with Lebesgue integral, provided that the Riemann integral exists, then $\int_A f(x) d\mu$ is the integral of sin$(x)$ on the interval [$0, \pi/2$], which is $-\text{cos}(\pi/2) + \text{cos}(0) = 0 + 1 = 1$.
 
-    We write the integral such as $\int_A g(x) d\mu = \int_{A \setminus \I} g(x) d\mu + \int_{A \setminus \Q} g(x) d\mu$. Due to the piecewise definition of the function, this becomes $\int_{A \setminus \I} \sin(x) d\mu + \int_{A \setminus \Q} \cos(x) d\mu = \int_{A} \cos(x) d\mu$. Then, this integral coincides with the Riemann integral on $[0, \pi/2]$ and $\int_{[0, \pi/2]} \text{cos}(x) = 1$.
+	\item Since $\Q$ and $\I$ are disjoint then $\int_A g d\mu = \int_{A \cap \Q} g d\mu + \int_{A \cap \I} g d\mu$. 
+	However, $\Q$ is countable and $\mu(\Q) = 0$ which means that $\int_{A \cap Q} g d\mu = 0$. \newline 
+	
+	By definition of $g$, we have that $\int_{A \cap \I} g d\mu = \int_{A \cap \I} \cos d\mu$. Then $\int_{A \cap \I} \cos(x) d\mu = \int_A \cos(x) d\mu - \int_{A \cap \Q} \cos(x) d\mu$. Once again, $\int_{A \cap \I} \cos(x) d\mu = 0$, so $\int_A g d\mu = \int_A \cos d\mu$. This coincides with the Riemann integral and gives us that $\int_A g d\mu = \sin(\pi/2) - \sin(0) = 1$.
 
-
-    %%% CAREFUL HOW DISCUSSING INTEGRALS OF DOMAINS 
-    \item Consider $A = U \cup V$, where $U := \{ x \in A : \cos(x) \in \I \}$, $V := \{ x \in A : \cos(x) \in \Q \}$. Since $U$ and $V$ are trivially disjoint then $\int_A h(x) d\mu = \int_U h(x) d\mu + \int_V h(x) d\mu$. However, $\cos(x)$ is irrational for all non-zero rational values $x$, hence $V = \{ 0, \pi/2 \}$ and $\mu(V) = 0$. Consequently, $\int_A h(x) d\mu = \int_U h(x) d\mu$. \newline 
-
-    By definition of $h$, then $h$ constrained to $U$ is $\sin^2(x)$, hence $\int_A h(x) = \int_U \sin^2(x) d\mu$. Once more, this is a continuous function which coincides with the Riemann integral and --- TO FINISH.
+    \item To solve this question, we discuss when $\cos(x)$ is rational, on the set $A$. Since $\cos(x)$ is bijective on $[0, \pi/2]$, then it must map countable sets to countable sets. Hence, $\cos(x)$ is rational precisely when $x$ is rational, implying that $U := \{ x : \cos(x) \in \Q \}$ is countable.
+    
+    We redefine the function $h$ as follows: 
+    \begin{align*}
+    	h(x) = 
+    	\begin{cases}
+    		\sin(x) & x \in U \\ 
+    		\sin^2(x) & x \in A \setminus U \\ 
+ 		\end{cases}
+    \end{align*}
+	Then, we have that $\mu(U) = 0$, since $U$ is countable. So, $\int_A h(x) d\mu = \int_U h(x) d\mu + \int_{A \setminus U} h(x) d\mu = \int_{A \setminus U} h(x) d\mu$. By definition of $h$, we have that $\int_{A \setminus U} h(x) d\mu = \int_{A \setminus U} \sin^2(x) d\mu$. We expand this into $\int_{A \setminus U} \sin^2(x) d\mu = \int_{A} \sin^2(x) d\mu - \int_{U} \sin^2(x) d\mu$. The integral over $U$ is $0$ since $U$ is countable and so $\int_A h(x) d\mu = \int_A \sin^2(x) d\mu$. This is a continuous function on a bounded interval $A$ and must coincide with the Riemann integral. \newline
+	
+	The Riemann integral of $\int_A \sin^2(x) d\mu = \frac{1}{2}(\frac{\pi}{2} - \frac{\sin(\pi)}{2}) = \frac{\pi}{4}$. Hence $\int_A h d\mu = \pi/4$. 
 \end{enumerate}
 
 \end{document}
