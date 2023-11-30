@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage{listofitems}
+\usepackage[a4paper, margin=0.8in]{geometry}
+
+
+\title{Topics in Algebra  --- Feedback Exercise 5}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\newcommand{\order}[1]{|#1|}
+\newcommand{\setS}{\mathcal{S}}
+\newcommand{\norm}{\trianglelefteq}
+
+\newcommand{\Z}{\mathbb{Z}}
+
+\maketitle
+
+%%%
+\begin{center}
+\section*{Question (1)}
+\end{center}
+
+Let $G$ be a nonabelian group of order 14.
+\begin{enumerate}[label=\alph*)]
+	\item By prime decomposition series, $14 = 7 \cdot 2$. Hence, by Sylow I, there exist a subgroup of $H$ and $K$ of order $7$ and $2$ respectively. Since $H$ has prime order (7), then it must be cyclic, let $H = \langle a \mid a^7\rangle$. 
+	
+	Define $n = |\{P : P\text{ is a Sylow 7-subgroup}\}|$. By Sylow III, $n \equiv 1 (\mod 7)$ and $n \,|\,14$. The only overlapping element for $n$ from these conditions is 1, hence $n = 1$. As there is only one subgroup of order $7$, it must be normal.
+	
+	\item Let $b \in G$ and $b \notin H$, then $b$ must have order $1, 2, 7 \text{ or } 14$ by Lagrange's. Given $b \notin H$, then $b$ cannot have order $7$, since $H$ is the only order 7 subgroup in $G$. Similarly, it cannot be trivial, since the trivial element is in $H$.  
+	
+	Since $G$ is nonabelian, it cannot be cyclic so $b$ cannot have order 14. Hence, it must have order 2. This means that $b^2 = 1$. Denote $K = \langle b \mid b^2 \rangle$. Since $H \cap K = \{1\}$ and $H$ is normal in $G$, we have that $H \times K$ is a subgroup of $G$ order $14$, which must be $G$, hence $H \times K \cong G$. Consequently, as both $H$ and $K$ are cyclic, $\{a, b\}$ are a generating set of $G$. Furthermore, since $G$ is nonabelian, we know that the generators of $H$ and $K$ must not commute, so $ba \neq ab$.
+	
+	\item Since $H$ is normal, $bab^{-1} \in H$, for all $b \in G, a \in H$. So, $bab^{-1} = a^r$, for $a^r \in H$, which implies $ba = a^rb$. If $r = 1$, then $ba = ab$, against our hypothesis, so $r \neq 1$. Similarly, if $r = 7$, then $bab^{-1} = 1$ which suggests that $a$ is trivial, however $a$ is order 7 so that is not possible. Hence $2 \leq r \leq 6$. 
+	\item By Exercise 40.13b in Fraleigh, a group presentation of the form $\langle a, b \mid a^m = 1, b^n = 1, ba = a^rb\rangle$ is a group of order $mn$ iff $r^n \equiv 1 \, (\text{mod } m)$. Since $G = \langle a, b \mid a^7 = 1, b^2 = 1, ba = a^rb \rangle$ and $|G| = 14$, we know that $r^2 \equiv 1 \, (\text{mod } 7)$. Given that $2 \leq r \leq 6$, we can compute possiblities for $r$. Through computation, $2^2 (\text{mod 7}) = 4$, $3^2 (\text{mod 7}) = 2$, $4^2 (\text{mod 7}) = 2$, $5^2 (\text{mod 7}) = 4$, $6^2 (\text{mod 7}) = 1$. Hence $r = 6$.
+	
+	Consequently, as $G$ is an abstract nonabelian group of order 14, we see that all nonabelian groups of order $14$ are isomorphic to the group presentation: $\langle a, b \mid a^7 = 1, b^2 = 1, ba = a^6b\rangle$
+\end{enumerate}
+
+\begin{center}
+	\section*{Question (2)}
+\end{center}
+
+\begin{flushleft}
+	From question 1, we know that the isomorphism type of nonabelian groups is given by the presentation above. We only must consider abelian groups. \newline 
+	
+	If $G$ is an abelian group of order 14, then by the same techniques of Sylow theorems above, there is a unique Sylow 7-subgroup, $H$, and at least one Sylow 2-subgroup, denoted $K$. Define $H = \langle a \mid a^7 = 1 \rangle$ and $K = \langle b \mid b^2 = 1 \rangle$. Then $H \cap K = \{1\}.$ Since $H$ is normal in $G$, then $H \times K \cong G$. However, since $G$ is abelian, $ab = ba$ which means that $G = \langle a, b \mid a^7 = 1, b^2 = 1, ab = ba \rangle$. By the theorem of Finitely Generated Abelian Groups, $G \cong \Z_7 \times \Z_2$, so $G \cong \Z_{14}$. 
+	
+	Hence, the isomorphism types of groups of order 14 are $\Z_{14}$ and $\langle a, b \mid a^7 = 1, b^2 = 1, ba = a^6b\rangle$.
+\end{flushleft}
+\end{document}
