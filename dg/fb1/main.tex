@@ -1,0 +1,91 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{indentfirst}
+\usepackage{enumitem, amsmath, amssymb}
+\usepackage[a4paper, margin=0.8in]{geometry}
+\usepackage{graphicx, caption}
+
+
+\title{Differential Geometry  --- Feedback Exercise 1}
+\author{Samuel Jackson --- 2520998j}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+%%%
+\begin{center}
+    \section*{Question (1)}
+\end{center}
+
+    \begin{flushleft}
+        For the function to be a parameterised curve, we require that that the function is smooth and defined on an open interval. Clearly $\alpha$ is defined on the open interval $(0, 100)$. To determine if $\alpha$ is smooth, we recognise that $\sin$, $\cos$ and polynomials are smooth functions as well as the fact that the composition of smooth functions is smooth. Given $\alpha$ is made up of three smooth functions, we know $\alpha$ is also smooth. \newline  
+        
+        For $\alpha$ to be regular, we require that $\dot{\alpha}(s) \neq \mathbf{0}$ for all $s \in (0, 100)$. Deriving $\dot{\alpha}$, we find: $\dot{\alpha} = ((2t-1)\cos(t^2 - t), (1-2t)\sin(t^2-t), 2t-1)$. Immediately, we see that for $\dot{\alpha}(\frac{1}{2}) = (0, 0, 0)$, so $\alpha$ is not regular.  
+    \end{flushleft}
+%%%
+\begin{center}
+    \section*{Question (2)}
+\end{center}
+
+    \begin{flushleft}
+        Given the components of $\gamma$ are smooth functions $\sin(s)$ and $\cos(s)$, $\gamma$ is similarly a smooth function on the open interval $\R$. Furthermore, $\gamma$ is regular since $\dot{\gamma}$ is solely comprised of similar $-\sin(s)$ and $\cos(s)$ functions which can not be $0$ simultaneously, for $s \in \R$. Hence, $\gamma$ is a regular parameterised curve (RPC). \newline
+
+        For the RPC $\gamma$, we require that $||\dot{\gamma}|| = 1$ for $\gamma$ to be unit-speed. Hence, we calculate $\dot{\gamma}(s) = (-\sin(s), \dots, -\sin(s), \cos(s), \dots, \cos(s))$, where there is $n$-total $-\sin$ and $\cos$ components respectively. Then, we calculate the magnitude of $\dot{\gamma}$:
+        \begin{align*}
+            ||\dot{\gamma}(s)|| &= \sqrt{\frac{1}{n}(\sin^2(s) + \dots + \sin^2(s) + \cos^2(s) + \dots + \cos^2(s))} \\
+            ||\dot{\gamma}(s)|| &= \sqrt{\frac{1}{n}(n(\sin^2(s) + \cos^2(s))} \\ 
+            ||\dot{\gamma}(s)|| &= \sqrt{1} \\ 
+            ||\dot{\gamma}(s)|| &= 1
+        \end{align*}
+        Hence, $\gamma$ is a unit-speed curve. \newline 
+
+        Consequently, we calculate the Frenet-Serret frame for $n=1$. We have $\gamma_1 : \R \rightarrow \R^2$, $s \mapsto (\cos(s), \sin(s))$, so $\dot{\gamma_1} = (-\sin(s), \cos(s)) = \mathbf{T}$. Similarly, since $\gamma_1$ is unit-speed, we can calculate $\mathbf{N}$, which is simple for curves in $\R^2$. $\mathbf{N} = (-\cos(s), -\sin(s))$. Therefore, the Frenet-Serret frame is $\{\mathbf{T}, \mathbf{N}\}$.
+    \end{flushleft}
+%%%
+\begin{center}
+    \section*{Question (3)}
+\end{center}
+
+    \begin{flushleft}
+        To find that $\gamma$ is of unit-speed, we calculate the derivative as $\dot{\gamma} = (\frac{1}{2}\sqrt{1 + s}, \frac{-1}{2}\sqrt{1-s}, \frac{1}{\sqrt{2}})$. Consequently, we calculate the magnitude as follows: 
+        \begin{align*}
+            ||\dot{\gamma}(s)|| &= \sqrt{\frac{1}{4}(1+s) + \frac{1}{4}(1-s) + \frac{1}{2}} \\ 
+            ||\dot{\gamma}(s)|| &= \sqrt{\frac{1}{4} + \frac{s}{4} + \frac{1}{4} - \frac{s}{4} + \frac{1}{2}} \\ 
+            ||\dot{\gamma}(s)|| &= \sqrt{\frac{1}{2} + \frac{1}{2}} \\ 
+            ||\dot{\gamma}(s)|| &= \sqrt{1} \\ 
+            ||\dot{\gamma}(s)|| &= 1 \\ 
+        \end{align*}
+        Hence, $\gamma$ is unit-speed. \newline
+
+        To calculate the curvature and torsion, we use the respective equations:
+        \begin{equation*}
+            \kappa = \frac{||\dot{\gamma} \times \ddot{\gamma}||}{||\dot{\gamma}||^3}
+        \end{equation*}
+        
+        \begin{equation*}
+                \tau = \frac{\det({\dot{\gamma}} \mid \ddot{\gamma} \mid \dddot{\gamma})}{||\dot{\gamma} \times \ddot{\gamma}||^2}
+        \end{equation*}
+
+        As the equations necessitate, we need the second and third derivatives of $\gamma$ which, respectively, are:
+        \begin{align*}
+            \ddot{\gamma} &= \biggl(\frac{1}{4\sqrt{1+s}}, \frac{1}{4\sqrt{1-s}}, 0\biggl) \\ 
+            \dddot{\gamma} &= \biggl(\frac{-1}{8(1+s)^{\frac{-3}{2}}}, \frac{1}{8(1-s)^{\frac{-3}{2}}}, 0\biggl)
+        \end{align*}
+        Firstly, note that $\gamma$ is a unit-speed curve so $||\dot{\gamma}|| = 1$, hence $\kappa = ||\dot{\gamma} \times \ddot{\gamma}||$. We solve for $\kappa$ first: 
+
+        \begin{align*}
+            \kappa &= ||\dot{\gamma} \times \ddot{\gamma}|| \\ 
+            \kappa &= ||\dot{\gamma}|| \, ||\ddot{\gamma}|| \sin(\theta)\mathbf{n} \\ 
+            \kappa &= (\frac{\sqrt{2}}{4\sqrt{1-s^2}})sin(\theta)\mathbf{n} \\ 
+            \kappa &= \frac{\sqrt{2}}{4\sqrt{1-s^2}}
+        \end{align*}
+    \end{flushleft}
+
+\end{document}
+ 
