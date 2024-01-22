@@ -77,14 +77,40 @@
             \ddot{\gamma} &= \biggl(\frac{1}{4\sqrt{1+s}}, \frac{1}{4\sqrt{1-s}}, 0\biggl) \\ 
             \dddot{\gamma} &= \biggl(\frac{-1}{8(1+s)^{\frac{-3}{2}}}, \frac{1}{8(1-s)^{\frac{-3}{2}}}, 0\biggl)
         \end{align*}
-        Firstly, note that $\gamma$ is a unit-speed curve so $||\dot{\gamma}|| = 1$, hence $\kappa = ||\dot{\gamma} \times \ddot{\gamma}||$. We solve for $\kappa$ first: 
+        Firstly, note that $\gamma$ is a unit-speed curve so $||\dot{\gamma}|| = 1$, hence $\kappa = ||\ddot{\gamma}||$. We solve for the curvature, $\kappa$, first: 
 
         \begin{align*}
-            \kappa &= ||\dot{\gamma} \times \ddot{\gamma}|| \\ 
-            \kappa &= ||\dot{\gamma}|| \, ||\ddot{\gamma}|| \sin(\theta)\mathbf{n} \\ 
-            \kappa &= (\frac{\sqrt{2}}{4\sqrt{1-s^2}})sin(\theta)\mathbf{n} \\ 
-            \kappa &= \frac{\sqrt{2}}{4\sqrt{1-s^2}}
+		\kappa &= ||\ddot{\gamma}|| \\ 
+		\kappa &= \sqrt{\frac{1}{16(1+s)} + \frac{1}{16(1-s)}} \\ 
+		\kappa &= \frac{1}{\sqrt{16}}\sqrt{\frac{1}{1+s} + \frac{1}{1-s}} \\ 
+		\kappa &= \frac{1}{4}\sqrt{\frac{2}{1-s^2}} \\ 
+		\kappa &= \frac{1}{4}\sqrt{\frac{2}{1-s^2}} \\
+		\kappa &= \frac{\sqrt{2}}{4\sqrt{1-s^2}}
         \end{align*}
+
+	For $\tau$, it is a longer calculation. We first calculate $\det({\dot{\gamma}} \mid \ddot{\gamma} \mid \dddot{\gamma})$: 
+
+	\begin{align*}
+		\tau &= \det({\dot{\gamma}} \mid \ddot{\gamma} \mid \dddot{\gamma}) \\ 
+		\tau &= \dot{\gamma} \cdot (\ddot{\gamma} \times \dddot{\gamma}) \\ 
+		\tau &= \dot{\gamma} \cdot \biggl(0, 0, \frac{1}{16(1-s)^\frac{3}{2}}\biggr) \\ 
+		\tau &= \frac{\sqrt{2}}{32(1-s^2)^\frac{3}{2}} 
+	\end{align*}
+	
+	Similarly, we calculate $||\dot{\gamma} \times \ddot{\gamma}||$, which is just $||\ddot{\gamma}||$ for a unit-speed curve.
+	\begin{align*}
+		||\dot{\gamma} \times \ddot{\gamma}|| &= ||\, ||\dot{\gamma}|| \, ||\ddot{\gamma}|| \, \sin(\theta)\mathbf{n}|| \\ 
+		||\dot{\gamma} \times \ddot{\gamma}|| &= ||\, 1 \cdot ||\ddot{\gamma}|| \, \cdot 1 \cdot \mathbf{n}|| \\ 
+		||\dot{\gamma} \times \ddot{\gamma}|| &= ||\ddot{\gamma}|| \\ 
+		||\dot{\gamma} \times \ddot{\gamma}|| &= \frac{\sqrt{2}}{4\sqrt{1-s^2}}
+	\end{align*}
+
+	Combining these components, we find the torsion, $\tau$:
+	\begin{align*}
+		\tau &= \frac{\sqrt{2}}{32(1-s^2)^{\frac{3}{2}}} \cdot \frac{16(1-s^2)}{2} \\
+		\tau &= \frac{16\sqrt{2}(1-s^2)}{64(1-s^2)^\frac{3}{2}} \\ 
+		\tau &= \frac{\sqrt{2}}{4\sqrt{1-s^2}} 
+	\end{align*}
     \end{flushleft}
 
 \end{document}
